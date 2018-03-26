@@ -9,6 +9,7 @@ import { Comment } from '../../models/comment';
     selector: 'users'
 })
 export class UsersComponent implements OnInit{
+    isBusy: boolean = false;
     users: User[] = [];    
     posts: Post[] = [];
     comments: Comment[] = [];
@@ -18,7 +19,12 @@ export class UsersComponent implements OnInit{
     }
     
     ngOnInit() {
-        Promise.all([this._usersService.fetchUsers(), this._usersService.fetchPosts(), this._usersService.fetchComments()]).then((responses) => {
+        this.refresh();
+    }
+
+    refresh(): Promise<any> {
+        this.isBusy = true;
+        return Promise.all([this._usersService.fetchUsers(), this._usersService.fetchPosts(), this._usersService.fetchComments()]).then((responses) => {
             this.users = responses[0];
             this.posts = responses[1];
             this.comments = responses[2];
@@ -30,6 +36,7 @@ export class UsersComponent implements OnInit{
                 user.postsAmount = user.posts.length;
                 user.postsCommentsRatio = this.calculatePostCommentsRatio(user.posts);
             });           
+            this.isBusy = false;
             console.log(this.users);
         });
     }
