@@ -4,7 +4,6 @@ import { User } from '../models/user';
 import { Post } from '../models/post';
 import { Comment } from '../models/comment';
 import 'rxjs/add/operator/toPromise';
-import { Comment } from '@angular/compiler';
 
 @Injectable()
 export class UsersService {
