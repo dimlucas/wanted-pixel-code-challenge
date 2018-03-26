@@ -1,8 +1,11 @@
+import { Post } from "./post";
+
 export interface User {
     id: number;
     name: string;
     username: string;
     email: string;
-    posts: number;
+    posts: Post[];
+    postsAmount: number;
     postsCommentsRatio: number;
 }

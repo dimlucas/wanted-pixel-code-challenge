@@ -14,14 +14,14 @@ export class UsersService {
     }   
     
     fetchUsers(): Promise<User[]> {
-        return this._http.get<User[]>(`${this._baseUrl}/users`).toPromise()
+        return this._http.get<User[]>(`${this._baseUrl}users`).toPromise()
     }    
 
     fetchPosts(): Promise<Post[]> {
-        return this._http.get<Post[]>(`${this._baseUrl}/posts`).toPromise();
+        return this._http.get<Post[]>(`${this._baseUrl}posts`).toPromise();
     }
 
     fetchComments(): Promise<Comment[]> {
-        return this._http.get<Comment[]>(`${this._baseUrl}/comments`).toPromise();
+        return this._http.get<Comment[]>(`${this._baseUrl}comments`).toPromise();
     }
 }
