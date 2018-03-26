@@ -8,9 +8,6 @@ import { Comment } from '@angular/compiler';
 
 @Injectable()
 export class UsersService {
-    users: User[] = [];
-    posts: Post[] = [];
-    comments: Comment[] = [];
     private _baseUrl: string = "http://jsonplaceholder.typicode.com/";
 
     constructor(private _http: HttpClient) {
