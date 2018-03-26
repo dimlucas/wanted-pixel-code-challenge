@@ -3,9 +3,9 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 
-app.use(express.static('./'));
+app.use(express.static('./dist/'));
 app.get('/', (req, res) => {
-    res.sendFile("index.html");
+    res.sendFile("./dist/index.html");
 });
 
 app.listen(PORT, () => {
