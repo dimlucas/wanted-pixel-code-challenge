@@ -3,6 +3,8 @@ import { UsersService } from '../../services/users.service';
 import { User } from '../../models/user';
 import { Post } from '../../models/post';
 import { Comment } from '../../models/comment';
+import 'jquery';
+import 'jsgrid';
 
 @Component({
     templateUrl: './users.component.html',
@@ -19,7 +21,22 @@ export class UsersComponent implements OnInit{
     }
     
     ngOnInit() {
-        this.refresh();
+        this.refresh().then(() => {
+            ($('#grid') as any).jsGrid({
+                width: "100%",
+                height: "400px",
+                inserting: false,
+                editing: false,
+                sorting: true,
+                paging: false,
+                data: this.users,
+                fields: [
+                    { name: 'name', title: 'Name', type: 'text' },
+                    { name: 'postsAmount', title: 'Posts', type: 'number' },
+                    { name: 'postsCommentsRatio', title: 'Comments/Post', type: 'number' }
+                ]
+            });
+        });
     }
 
     refresh(): Promise<any> {
@@ -38,6 +55,7 @@ export class UsersComponent implements OnInit{
             });           
             this.isBusy = false;
             console.log(this.users);
+            return;
         });
     }
 
