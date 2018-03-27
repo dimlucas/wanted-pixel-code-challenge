@@ -20,6 +20,11 @@ $blue: #0275d8;
     }
 }
 
+.card-header {
+    background-color: $blue !important;
+    color: white !important;
+}
+
 table {
     tr {
         td:first-child {

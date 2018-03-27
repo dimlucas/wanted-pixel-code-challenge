@@ -24,9 +24,6 @@ import { StateService } from './services/state.service';
         SharedModule,
         AppRoutingModule,
         HttpClientModule
-        // RouterModule.forRoot([
-        //     { path: '', component: UsersComponent }            
-        // ])
     ],
     providers: [UsersService, StateService],
     bootstrap: [AppComponent]

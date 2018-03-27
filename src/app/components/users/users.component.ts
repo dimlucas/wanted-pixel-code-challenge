@@ -90,10 +90,14 @@ export class UsersComponent implements OnInit{
             throw new Error("Something went wrong...");
         }
         this._state.currentUser = user;
-        this._router.navigate(['user']);
+        this._router.navigate(['user', this.slugify(user.name)]);
     }
 
     findByName(name: string): User {
         return this.users.find(u => u.name === name);
+    }
+
+    slugify(str: string) {
+        return str.split(' ').join('-').toLowerCase();
     }
 }
