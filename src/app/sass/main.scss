@@ -3,6 +3,8 @@
 @import 'components/all';
 @import 'layout/layout.scss';
 
+$blue: #0275d8;
+
 .jsgrid-header-scrollbar {
     overflow: hidden;
 }
@@ -13,7 +15,18 @@
 
 .jsgrid-header-row {
     .jsgrid-header-cell {
-        background-color: #0275d8;
+        background-color: $blue;
         color: white;
+    }
+}
+
+table {
+    tr {
+        td:first-child {
+            &:hover {
+                color: $blue;
+                text-decoration: underline;
+            }
+        }
     }
 }

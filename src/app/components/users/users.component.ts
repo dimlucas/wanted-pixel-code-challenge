@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UsersService } from '../../services/users.service';
 import { User } from '../../models/user';
 import { Post } from '../../models/post';
 import { Comment } from '../../models/comment';
 import 'jquery';
 import 'jsgrid';
+import { StateService } from '../../services/state.service';
 
 @Component({
     templateUrl: './users.component.html',
@@ -16,7 +18,7 @@ export class UsersComponent implements OnInit{
     posts: Post[] = [];
     comments: Comment[] = [];
 
-    constructor(private _usersService: UsersService) {
+    constructor(private _usersService: UsersService, private _router: Router, private _state: StateService) {
 
     }
     
@@ -36,6 +38,7 @@ export class UsersComponent implements OnInit{
                     { name: 'postsCommentsRatio', title: 'Comments/Post', type: 'number' }
                 ]
             });
+            this.registerEvents();
         });
     }
 
@@ -59,6 +62,12 @@ export class UsersComponent implements OnInit{
         });
     }
 
+    registerEvents() {
+        $('tbody tr td:first-child').each((index, item) => {
+            item.onclick = this.onNameClicked.bind(this, item.textContent);
+        });
+    }
+
     findUserPosts(allPosts: Post[], userId: number): Post[] {
         return allPosts.filter(p => p.userId == userId);
     }
@@ -74,4 +83,17 @@ export class UsersComponent implements OnInit{
         });
         return (numberOfComments / posts.length);
     } 
+
+    onNameClicked(name) {
+        let user = this.findByName(name);
+        if(!user) {
+            throw new Error("Something went wrong...");
+        }
+        this._state.currentUser = user;
+        this._router.navigate(['user']);
+    }
+
+    findByName(name: string): User {
+        return this.users.find(u => u.name === name);
+    }
 }

@@ -10,6 +10,7 @@ import {WelcomeComponent} from "./welcome/welcome.component";
 import { UsersService } from './services/users.service';
 import { UsersComponent } from './components/users/users.component';
 import { UserComponent } from './components/user/user.component';
+import { StateService } from './services/state.service';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,7 @@ import { UserComponent } from './components/user/user.component';
         //     { path: '', component: UsersComponent }            
         // ])
     ],
-    providers: [UsersService],
+    providers: [UsersService, StateService],
     bootstrap: [AppComponent]
 })
 export class AppModule {
