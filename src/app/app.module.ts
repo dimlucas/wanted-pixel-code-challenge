@@ -9,12 +9,14 @@ import {AppRoutingModule} from "./app-routing.module";
 import {WelcomeComponent} from "./welcome/welcome.component";
 import { UsersService } from './services/users.service';
 import { UsersComponent } from './components/users/users.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         WelcomeComponent,
-        UsersComponent
+        UsersComponent,
+        UserComponent
     ],
     imports: [
         BrowserModule,
