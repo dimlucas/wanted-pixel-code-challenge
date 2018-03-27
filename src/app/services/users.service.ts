@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UsersService {
-    private _baseUrl: string = "http://jsonplaceholder.typicode.com/";
+    private _baseUrl: string = "https://jsonplaceholder.typicode.com/";
 
     constructor(private _http: HttpClient) {
 
