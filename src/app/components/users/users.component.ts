@@ -31,7 +31,7 @@ export class UsersComponent implements OnInit{
                 paging: false,
                 data: this.users,
                 fields: [
-                    { name: 'name', title: 'Name', type: 'text' },
+                    { name: 'name', title: 'Name (Click to Sort)', type: 'text' },
                     { name: 'postsAmount', title: 'Posts', type: 'number' },
                     { name: 'postsCommentsRatio', title: 'Comments/Post', type: 'number' }
                 ]
