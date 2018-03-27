@@ -3,3 +3,11 @@
 @import 'components/all';
 @import 'layout/layout.scss';
 
+.jsgrid-header-scrollbar {
+    overflow: hidden;
+}
+
+.jsgrid-grid-body {
+    overflow: hidden;
+}
+

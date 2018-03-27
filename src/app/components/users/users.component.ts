@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit{
         this.refresh().then(() => {
             ($('#grid') as any).jsGrid({
                 width: "100%",
-                height: "400px",
+                height: "600px",
                 inserting: false,
                 editing: false,
                 sorting: true,
