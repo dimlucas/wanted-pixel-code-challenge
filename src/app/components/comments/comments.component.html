@@ -1,0 +1,8 @@
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let comment of post.comments">
+        <strong>{{comment.name}} - {{comment.email}}</strong>
+        <p>
+            {{comment.body}}
+        </p>
+    </li>
+</ul>

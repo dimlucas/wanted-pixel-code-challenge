@@ -8,4 +8,5 @@ export interface User {
     posts: Post[];
     postsAmount: number;
     postsCommentsRatio: number;
+    address: any;
 }

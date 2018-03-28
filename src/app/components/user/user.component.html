@@ -6,16 +6,24 @@
             </div>
             <div class="card-block">
                 <ul class="list-group">
-                    <li class="list-group-item" *ngFor="let post of user.posts">
+                    <li class="list-group-item" *ngFor="let post of user.posts; let i=index">
                         <h4>{{post.title}}</h4>
                         <p>
                             {{post.body}}
                         </p>
-                        <a href="">{{post.comments.length}} Comments</a>
+                        <a href="" (click)="toggleCommentsVisibility($event,i)">{{post.comments.length}} Comments</a>
+                        <div class="comments-section" *ngIf="commentSectionsVisibility[i]">
+                            <comments [post]="post"></comments>    
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="col-4"></div>
+    <div class="col-4 mt-1">
+        <button class="btn btn-primary" (click)="toggleUserDetails()">User Details</button>
+        <div>
+            <user-details *ngIf="detailsVisible"  [user]="user"></user-details>    
+        </div>
+    </div>
 </div>
